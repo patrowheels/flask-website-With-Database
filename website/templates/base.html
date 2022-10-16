@@ -54,6 +54,35 @@
     </form>
   </nav>
 
+  <!-- this with block has to be used in flask to get messages from message categories -->
+  {% with messages = get_flashed_messages(with_categories=true)%}
+  <!-- checking if we have data messages -->
+  {% if messages%}
+
+  {% for category, message in messages %}
+  {%if category == "error" %}
+  <!-- this is creating the read error message element  -->
+  <div class="alert alert-danger alert-dissmissable fade show" role= "alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+      <!-- this creates the little x on the right side to close out error message -->
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {%else%}
+  <!-- this is creating the green success message element  -->
+  <div class="alert alert-success alert-dissmissable fade show" role= "alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {%endif%}
+  {%endfor%}
+  {%endif%}
+  {% endwith%}
+
+
   <div class="container">{% block content %} {% endblock %}</div>
   
 <script
