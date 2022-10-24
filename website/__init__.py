@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
 
-#
+# setting up sqlAlchemy and storing it in variable called db
 db = SQLAlchemy()
 DB_NAME = "database.db"
 

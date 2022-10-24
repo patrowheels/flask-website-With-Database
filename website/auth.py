@@ -67,6 +67,7 @@ def sign_up():
         elif len(password1) < 7:
             flash("Password must be at least 7 characters", category="error")
         else:
+            # this creating a new user from the User class we created in our models.py
             new_user = User(email=email, first_name=first_name,
                             password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
@@ -74,7 +75,7 @@ def sign_up():
             flash("Account created!", category="Success")
             login_user(user, remember=True)
 
-            return redirect(url_for('views.home'))
+            return redirect(url_for('home.hmtl'))
 
     return render_template("sign_up.html", user=current_user)
 
