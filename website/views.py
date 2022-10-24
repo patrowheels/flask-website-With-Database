@@ -9,10 +9,12 @@ views = Blueprint('views', __name__)
 # this is a root and in this case it needs the function right after it
 
 
+# adding in the methods attribute allows this route to recieve "GET" or "POST" requests
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
     if request.method == "POST":
+        # request.for.get('note') is getting the text area element from our home.html by its atrribute "note"
         note = request.form.get('note')
 
         if len(note) < 1:
@@ -39,3 +41,16 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
+# @views.route('/edit-note', methods=['POST'])
+# def delete_note():
+#     note = json.loads(request.data)
+#     noteId = note['noteId']
+#     # when you use get it accesses the primary key
+#     note = Note.query.get(noteId)
+#     if note:
+#         if note.user_id == current_user.id:
+#             db.session.add(note)
+#             db.session.commit()
+
+#     return jsonify({})
