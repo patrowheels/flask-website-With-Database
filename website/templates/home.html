@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% block title %}Home28{% endblock %}
 
 {% block content %}
+
 <h1 align="center">Notes</h1>
 <ul class="list-group list-group-flush" id="notes">
     {% for note in user.notes%}
@@ -14,11 +15,13 @@
     {% endfor %}
 </ul>
 <form method="POST">
-    
+    <div style="width:50%; display: block; margin-left: auto; margin-right: auto; margin-top: 5%;">
+
     <textarea onclick="clickMe()" name="note" id="note" class="form-control"></textarea>
     <br />
     <div align="center">
         <button type="submit" class="btn btn-primary">Add Note</button>
+    </div>
     </div>
 </form>
 {% endblock %}
